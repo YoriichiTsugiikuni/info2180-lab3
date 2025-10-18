@@ -33,6 +33,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const sq = event.target;
         const idx = parseInt(sq.getAttribute('data-index'));
         
+        if (cells[idx] !== '' || !playing) {
+            return;
+        }
+        
         sq.textContent = turn;
         sq.classList.add(turn);
         cells[idx] = turn;
