@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const gameBoard = document.getElementById('board');
     const boxes = gameBoard.getElementsByTagName('div');
     const msg = document.getElementById('status');
+    const resetBtn = document.querySelector('.btn');
     
     const wins = [
         [0, 1, 2],
@@ -85,6 +86,24 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
     }
+    
+    function newGame() {
+        playing = true;
+        turn = 'X';
+        cells = ['', '', '', '', '', '', '', '', ''];
+        
+        msg.textContent = 'Move your mouse over a square and click to play an X or an O.';
+        msg.classList.remove('you-won');
+        
+        for (let i = 0; i < boxes.length; i++) {
+            boxes[i].textContent = '';
+            boxes[i].classList.remove('X');
+            boxes[i].classList.remove('O');
+            boxes[i].classList.remove('hover');
+        }
+    }
+    
+    resetBtn.addEventListener('click', newGame);
     
     setupGrid();
 });
